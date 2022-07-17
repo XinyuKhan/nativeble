@@ -63,19 +63,21 @@ bool NativeBleInternal::is_connected() {
     return [macable isPeripheralReady] == YES ? true : false;
 }
 
-
-void NativeBleInternal::connect(const BluetoothAddress &address) {
+void NativeBleInternal::start_connect(const BluetoothAddress &address) {
     //Ensure that the address is a valid UUID
     if (address.size() != 36) return;
 
     //Create a UUID object from std::string
     NSString *string = [[NSString alloc]initWithUTF8String:address.c_str()];
     NSUUID *uuid = [[NSUUID alloc]initWithUUIDString:string];
-    
+
     CBPeripheral *peripheral = [macable getPeripheralWithUUID:uuid];
     [macable setPeripheral:peripheral];
     [macable connect];
+}
 
+void NativeBleInternal::connect(const BluetoothAddress &address) {
+    start_connect(address);
     while (!this->is_connected());
 }
 

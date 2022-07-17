@@ -90,6 +90,15 @@ class NativeBleController {
     bool is_connected();
 
     /**
+     * NativeBleController::start_connect
+     *
+     * Connects to the provided BLE MAC address
+     *
+     * @param address: the MAC address in a 12 character string format
+     */
+    void start_connect(const BluetoothAddress &address);
+
+    /**
      * NativeBleController::connect
      *
      * Connects to the provided BLE MAC address

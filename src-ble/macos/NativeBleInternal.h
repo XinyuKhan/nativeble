@@ -20,6 +20,8 @@ namespace NativeBLE {
 
         bool is_connected();
 
+        void start_connect(const BluetoothAddress &address);
+
         void connect(const BluetoothAddress &address);
 
         void write_request(BluetoothUUID service, BluetoothUUID characteristic, DataChunk &data);

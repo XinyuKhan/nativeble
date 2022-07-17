@@ -25,6 +25,8 @@ void NativeBleController::scan_timeout(int32_t timeout_ms) { internal->scan_time
 
 bool NativeBleController::is_connected() { return internal->is_connected(); }
 
+void NativeBleController::start_connect(const BluetoothAddress& address) { internal->start_connect(address); }
+
 void NativeBleController::connect(const BluetoothAddress& address) { internal->connect(address); }
 
 void NativeBleController::write_request(BluetoothUUID service, BluetoothUUID characteristic, DataChunk data) {
